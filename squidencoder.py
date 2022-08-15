@@ -2,6 +2,12 @@ import pyclip
 import sys
 
 reserved_words_dictionary = {
+        "no": "bu",
+        "No": "Bu",
+        "not": "buun",
+        "Not": "Buun",
+        "able": "fähig-ji",
+        "Able": "Fähig-ji",
         "how": "shimiko",
         "have": "tez",
         "Have": "Tez",
