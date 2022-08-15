@@ -3,6 +3,22 @@ import sys
 
 reserved_words_dictionary = {
         "how": "shimiko",
+        "have": "tez",
+        "Have": "Tez",
+        "has": "tez",
+        "Has": "Tez",
+        "Dave": "Dake",
+        "dave": "dake",
+        "david": "dake",
+        "David": "Dake",
+        "sam": "kewlaid",
+        "Sam": "Kewlaid",
+        "roger": "kuma",
+        "Roger": "Kuma",
+        "alex": "skremus",
+        "Alex": "Skremus",
+        "this": "malaan",
+        "This": "Malaan",
         "also": "akez",
         "has": "maz",
         "Has": "Maz",
@@ -60,6 +76,8 @@ reserved_words_dictionary = {
         "Into": "Ezudai",
         "around": "um-um",
         "Around": "Um-um",
+        "about": "um",
+        "About": "Um",
         "use": "ussen",
         "Use": "Ussen",
         "then": "zaalaan",
@@ -112,7 +130,15 @@ for word in start:
             
            
             if char == "d":
-                encode += "Д"
+                if x + 1 < len(word):
+                    if word[x+1] == char:
+                        encode += "\'Д"
+                        x += 1
+                    else:
+                        encode += "Д"
+                else:
+                    encode += "Д"
+
             
             # ss
             # st
@@ -123,6 +149,25 @@ for word in start:
                         x += 1
                     elif word[x+1] == "t":
                         encode += "š"
+                        x += 1
+                    elif word[x+1] == "e":
+                        if x + 2 < len(word):
+                            if word[x+2] == "e" or word[x+2] == "a":
+                                encode += char
+                            else:
+                                encode += "çand"
+                                x += 1
+                        else:
+                            encode += "çand"
+                            x += 1
+                    else:
+                        encode += char
+                else:
+                    encode += char
+            elif char == "c":
+                if x + 1 < len(word):
+                    if word[x+1] == "e":
+                        encode += "kand" 
                         x += 1
                     else:
                         encode += char
@@ -150,12 +195,24 @@ for word in start:
                         encode += char
                 else:
                     encode += char
+            elif char == "u":
+                if x + 1 < len(word):
+                    if word[x+1] == "a":
+                        encode += "ø"
+                        x += 1
+                    else: 
+                        encode += char
+                else:
+                    encode += char
             # or
             # ology
             elif char == "o":
                 if x + 1 < len(word):
                     if word[x+1] == "r":
                         encode += "-il"
+                        x += 1
+                    elif word[x+1] == "o":
+                        encode += "\'o"
                         x += 1
                     elif word[x:len(word)] == "logy":
                         encode += "-kyo"
@@ -226,6 +283,9 @@ for word in start:
                     if word[x+1] == "e":
                         encode += "δ"
                         x += 1
+                    elif word[x+1] == "g":
+                        encode += "\'g"
+                        x += 1
                     else:
                         encode += "g"
                 else:
@@ -238,6 +298,9 @@ for word in start:
                         x += 1
                     elif word[x+1] == "e":
                         encode += "μ"
+                        x += 1
+                    elif word[x+1] == "r":
+                        encode += "\'r"
                         x += 1
                     else:
                         encode += char
@@ -252,6 +315,9 @@ for word in start:
                     elif word[x+1] == "n":
                         encode += "й"
                         x += 1
+                    elif word[x+1] == "m":
+                        encode += "\'m"
+                        x += 1
                     else:
                         encode += "m"
                 else:
@@ -262,6 +328,9 @@ for word in start:
                     if word[x+1] == "t":
                         encode += "lnj"
                         x += 1
+                    elif word[x+1] == "n":
+                        encode += "\'n"
+                        x += 1
                     else:
                         encode += char
                 else:
@@ -271,6 +340,9 @@ for word in start:
                 if x + 1 < len(word):
                     if word[x+1] == "y":
                         encode += "-iij"
+                        x += 1
+                    elif word[x+1] == "l":
+                        encode += "\'l"
                         x += 1
                     else:
                         encode += char
