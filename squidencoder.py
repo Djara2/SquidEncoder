@@ -1,10 +1,14 @@
 import pyclip
 import sys
 import os
-VERNO = "2.0"
+import platform
+VERNO = "22.08.16"
 
 def print_header(version):
-    os.system("cls")
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
     print(f"Squid Language Interpreter v{version}\n")
 
 reserved_words_dictionary = {
@@ -169,9 +173,9 @@ def get_reversed_dictionary(d):
     return reversed_dict
 
 reversed_dict = get_reversed_dictionary(reserved_words_dictionary)
-
 mode = None
 command_line = False
+
 # get arguments from command line
 print_header(VERNO)
 if len(sys.argv) >= 3:
@@ -180,6 +184,10 @@ if len(sys.argv) >= 3:
     else:
         exit()
     start = sys.argv[2]
+    if "termux" in sys.argv:
+        termux = True
+    else:
+        termux = False
 else:
     if len(sys.argv) == 2:
         if mode != "exit":
@@ -457,8 +465,11 @@ def encode(start, reserved_words_dictionary):
             encode += " "
 
     print(f"\nEncode result: {encode}")
-    pyclip.copy(encode)
-    print("\nThe encoded result has been copied to your clipboard")
+    try:
+        pyclip.copy(encode)
+        print("\nThe encoded result has been copied to your clipboard")
+    except:
+        print("\nThe encoded result could not be copied to your clipboard because the pyclip module does not work with your platform.")
 
 def decode(start, d):
     start_og = start
@@ -700,8 +711,11 @@ def decode(start, d):
             encode += " "
     print(f"Input: {start_og}")
     print(f"\n\nDecode result: {encode}")
-    pyclip.copy(encode)
-    print("\n\nThe decoded result has been copied to your clipboard")
+    try:
+        pyclip.copy(encode)
+        print("\n\nThe decoded result has been copied to your clipboard")
+    except:
+        print("\nThe encoded result could not be copied to your clipboard because the pyclip module does not work with your platform.")
 
 
 while True:
