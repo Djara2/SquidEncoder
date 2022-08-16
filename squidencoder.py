@@ -8,11 +8,19 @@ def print_header(version):
     print(f"Squid Language Interpreter v{version}\n")
 
 reserved_words_dictionary = {
-        "him": "kaar",
-        "Him": "Kaar",
+        "a": "aan",
+        "an": "aa'n",
+        "A": "Aan",
+        "An": "Aa'n",
+        "him": "kaar-san",
+        "Him": "Kaar-san",
         "his": "kaar-noder",
         "His": "Kaar-noder",
-        "her": "kaal",
+        "he": "kaar",
+        "He": "Kaar",
+        "she": "kaal",
+        "She": "Kaal",
+        "her": "kaal-san",
         "hers": "kaal-noder",
         "her's": "kaal-noder",
         "Hers": "Kaal-noder",
@@ -50,6 +58,8 @@ reserved_words_dictionary = {
         "Roger": "Kuma",
         "alex": "skremus",
         "Alex": "Skremus",
+        "dylan": "hayabusa",
+        "Dylan": "Hayabusa",
         "this": "malaan",
         "This": "Malaan",
         "also": "akez",
@@ -58,8 +68,8 @@ reserved_words_dictionary = {
         "Also": "Akez",
         "was": "irupost",
         "Was": "Irupost",
-        "were": "irupost",
-        "Were": "Irupost",
+        "were": "irupostem",
+        "Were": "Irupostem",
         "How": "Shimiko",
         "can": "fähig-ki",
         "Can": "Fähig-ki",
@@ -80,11 +90,11 @@ reserved_words_dictionary = {
         "you": "kiimu",
         "You": "Kiimu",
         "are": "iru", 
-        "Are": "iru",
-        "am": "iru",
-        "Am": "Iru",
-        "I'm": "ikii iru",
-        "i'm": "ikii iru",
+        "Are": "Iru",
+        "am": "irum",
+        "Am": "Irum",
+        "I'm": "ikii irum",
+        "i'm": "ikii irum",
         "you're": "kiimu iru",
         "You're": "kiimu iru",
         "ur": "kiimu iru",
@@ -127,10 +137,10 @@ reserved_words_dictionary = {
         "It": "Kotosa",
         "only": "suur",
         "Only": "Suur",
-        "be": "iru",
-        "Be": "Iru",
-        "is": "iru",
-        "Is": "Iru",
+        "be": "iruz",
+        "Be": "Iruz",
+        "is": "irul",
+        "Is": "Irul",
         "one": "onin",
         "One": "Onin",
         "on": "dau",
@@ -467,9 +477,11 @@ def decode(start, d):
                 if char == "Д":
                     encode += "d"
                 
-                elif char in ["d", "z", "a", "i"]:
-                    if encode[len(encode)-3:] == "ing":
-                        encode += ""
+                elif char in ["d", "z", "a", "i", "n", "j", "e"]:
+                    if (encode[len(encode)-3:] == "ing") or (encode[len(encode)-2:] == "ce") or (encode[len(encode)-2:] == "se") or (encode[len(encode)-2:] == "nt") or (encode[len(encode)-2:] == "ly") or (encode[len(encode)-2:] == "et"):
+                        if char != "e":
+                            encode += ""
+    
                     else:
                         encode += char
                 
@@ -687,9 +699,9 @@ def decode(start, d):
                 x += 1
             encode += " "
     print(f"Input: {start_og}")
-    print(f"\nDecode result: {encode}")
+    print(f"\n\nDecode result: {encode}")
     pyclip.copy(encode)
-    print("\nThe decoded result has been copied to your clipboard")
+    print("\n\nThe decoded result has been copied to your clipboard")
 
 
 while True:
@@ -737,4 +749,3 @@ while True:
         print_header(VERNO) 
         print(f"In {mode} mode\n")
         start = input("> ")
-
