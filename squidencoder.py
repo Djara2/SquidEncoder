@@ -200,6 +200,14 @@ else:
         print("2. Decode")
         print("3. Lookup")
         mode = input("\n> ")
+        if mode == "1":
+            mode = "encode"
+        elif mode == "2":
+            mode = "decode"
+        elif mode == "3":
+            mode = "lookup"
+        else:
+            mode = "unrecognized"
         if mode == "exit":
             exit()
     
@@ -760,6 +768,14 @@ while True:
         print("2. Decode")
         print("3. Lookup")
         mode = input("\n> ")
-        print_header(VERNO) 
+        print_header(VERNO)
+        if mode == "1":
+            mode = "encode"
+        elif mode == "2":
+            mode = "decode"
+        elif mode == "3":
+            mode == "lookup"
+        else:
+            mode == "unrecognized" 
         print(f"In {mode} mode\n")
         start = input("> ")

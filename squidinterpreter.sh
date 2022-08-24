@@ -1,1 +1,1 @@
-python squidinterpreter.py
+python squidencoder.py
