@@ -1,3 +1,5 @@
+import pyclip
+
 def encode(start, reserved_words_dictionary):
     start = start.split()
     encode = ""

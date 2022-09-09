@@ -1,3 +1,5 @@
+import pyclip
+
 def decode(start, d):
     start_og = start
     start = start.split()
